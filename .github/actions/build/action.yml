@@ -3,8 +3,8 @@ description: 'Build Java Maven Project'
 
 inputs:
 
-  environment:
-    description: 'Environment'
+  jdk:
+    description: 'Jdk Version'
     required: true
 
 runs:
@@ -14,10 +14,10 @@ runs:
 
     - uses: actions/checkout@v4
     
-    - name: Set up JDK 17
+    - name: Set up JDK
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: ${{ inputs.jdk }}
         distribution: 'temurin'
         cache: maven
         
