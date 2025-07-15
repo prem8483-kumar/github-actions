@@ -2,19 +2,30 @@ name: Reusable workflow example
 
 on:
   workflow_call:
+  
     inputs:
-      config-path:
+    
+      jdk:
         required: true
         type: string
-    secrets:
-      token:
-        required: true
 
 jobs:
-  triage:
+  maven-build:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/labeler@v4
+
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK
+      uses: actions/setup-java@v4
       with:
-        repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.config-path }}
+        java-version: ${{ inputs.jdk }}
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    
+    
