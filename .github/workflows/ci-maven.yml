@@ -19,9 +19,12 @@ jobs:
 
     steps:
     
-    - uses: actions/checkout@v4
+    - name: Checkout project
+      id: checkout
+      uses: actions/checkout@v4
     
     - name: Set up JDK 17
+      id: setup-java
       uses: actions/setup-java@v4
       with:
         java-version: '17'
@@ -29,4 +32,20 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      id: build-jar
+      run: |
+       mvn -B package --file pom.xml
+
+    - name: Upload Jar as Artifact
+      id: upload-jar
+      uses: actions/upload-artifact@v4
+      with:
+        name: "jar"
+        path: "target/"
+
+    - name: Send Slack Message
+      if: ${{  inputs.send-to-slack == 'true' }}
+      uses: prem8483-kumar/send-to-slack@main
+      with:
+        message: ${{ steps.upload-jar.outputs.artifact-url }}
+        slack-webhook-url: ${{ inputs.slack-webhook-url }}
