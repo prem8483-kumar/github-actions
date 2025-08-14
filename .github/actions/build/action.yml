@@ -1,7 +1,10 @@
-name: 'maven-build'
-description: 'Build Java Maven Project'
+name: 'build-module'
 
 inputs:
+
+  module:
+    description: 'Module'
+    required: true
 
   jdk:
     description: 'Jdk Version'
@@ -21,5 +24,8 @@ runs:
         distribution: 'temurin'
         cache: maven
         
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Build Module
+      working-directory: ${{ inputs.module }}
+      run: |
+        echo "Building  ${{ inputs.module }}"
+      
