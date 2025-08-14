@@ -1,0 +1,46 @@
+name: Input Demo
+
+on:
+  workflow_dispatch:
+  
+    inputs:
+
+      environment:
+        description: "Environment to run on"
+        required: true
+        type: environment
+        default: 'qa'
+
+      test-suite:
+        description: "Select test suite"
+        required: false
+        default: 'cart'
+        type: choice
+        options:
+          - cart
+          - order
+          
+      test-tag:
+        description: 'Test tag'
+        required: true
+        type: string
+        default: 'regression'
+
+      send-report:
+        description: 'Send test report to Slack ?'
+        type: boolean
+        required: false
+        default: false   
+
+jobs:
+  use-inputs:
+    runs-on: ubuntu-latest
+    
+    steps:
+     - name: Print Input
+       run: |
+        echo "${{ inputs.environment }}"
+        echo "${{ inputs.test-suite }}"
+        echo "${{ inputs.test-tag }}"
+        echo "${{ inputs.send-report }}"
+       
