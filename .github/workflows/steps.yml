@@ -21,13 +21,13 @@ jobs:
        shell: bash
        working-directory: ./
        run: |
-        echo "${env.ENV_VARIABLE}"
+        echo "${env.SOME_ENV_VARIABLE}"
        env:
-        "ENV_VARIABLE": "DEMO"
+        "SOME_ENV_VARIABLE": "DEMO"
 
         
      - name: Upload file
-       if: ${{ inputs.upload-file }} 
+       #if: ${{ inputs.upload-file }} 
        id: upload-file
        continue-on-error: true
        timeout-minutes: 5
