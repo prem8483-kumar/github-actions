@@ -11,7 +11,7 @@ on:
         type: boolean
 
 jobs:
-  use-inputs:
+  steps-demo:
     runs-on: ubuntu-latest
     
     steps:
@@ -21,7 +21,7 @@ jobs:
        shell: bash
        working-directory: ./
        run: |
-        echo "${env.SOME_ENV_VARIABLE}"
+        echo "$SOME_ENV_VARIABLE"
        env:
         "SOME_ENV_VARIABLE": "DEMO"
 
