@@ -1,4 +1,4 @@
-name: Open new issue
+name: Update Token Permission
 
 on: workflow_dispatch
 
@@ -12,6 +12,7 @@ jobs:
       issues: write
       
     steps:
+    
       - run: |
           gh issue --repo ${{ github.repository }} \
             create --title "Issue title" --body "Issue body"
