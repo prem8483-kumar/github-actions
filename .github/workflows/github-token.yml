@@ -14,3 +14,8 @@ jobs:
        run: |
          echo "${{ secrets.GITHUB_TOKEN }}"
          echo "${{ github.token }}"
+
+     -  name: Print Personal Token
+        run: |
+          echo "${{ secrets.GHB_TOKEN }}"
+
