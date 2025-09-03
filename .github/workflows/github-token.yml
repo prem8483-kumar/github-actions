@@ -1,0 +1,16 @@
+name: Github Token
+
+on:
+  workflow_dispatch:
+  
+jobs:
+
+  github-token:
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+     - name: Print Github Token
+       run: |
+         echo "${{ secrets.GITHUB_TOKEN }}"
+         echo "${{ github.token }}"
