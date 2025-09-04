@@ -9,6 +9,14 @@ jobs:
     
     steps:
 
+     - name: Set an output
+       id: set-output
+       run: echo "output-value=hello-world" >> $GITHUB_OUTPUT
+       
+     - name: Print Output
+       run: |
+        echo "${{ steps.set-output.outputs.output-value }}"
+
      - name: Checkout repo
        uses: actions/checkout@v4
 
