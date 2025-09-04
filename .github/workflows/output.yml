@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  use-inputs:
+  use-output:
     runs-on: ubuntu-latest
     
     steps:
