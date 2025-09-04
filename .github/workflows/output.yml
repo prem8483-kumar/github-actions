@@ -9,9 +9,8 @@ jobs:
     
     steps:
 
-     - name: Check file exists
-       run: |
-        ls -R
+     - name: Checkout repo
+       uses: actions/checkout@v4
 
      - name: Upload to artfact
        id: upload-artfact
