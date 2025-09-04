@@ -2,15 +2,16 @@ name: Update Token Permission
 
 on: workflow_dispatch
 
+
+
 jobs:
 
   open-issue:
     runs-on: ubuntu-latest
-    
-    # permissions:
-    #   # contents: read
-    #   issues: write
-      
+
+    permissions:
+      issues: write
+  
     steps:
     
       - run: |
