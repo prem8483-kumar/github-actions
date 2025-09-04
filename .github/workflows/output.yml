@@ -14,7 +14,7 @@ jobs:
        uses: actions/upload-artifact@v4
        with:
         name: "output-demo"
-        path: "resource/output.txt"
+        path: "resource/to-upload.txt"
 
      - name: Print Output
        run: |
