@@ -1,0 +1,23 @@
+name: Output Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  use-inputs:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+     - name: Upload to artfact
+       id: upload-artfact
+       uses: actions/upload-artifact@v4
+       with:
+        name: "output-demo"
+        path: "output.txt"
+
+     - name: Print Output
+       run: |
+        echo "${{ steps.upload-artfact.outputs.artifact-url }}"
+       
+       
