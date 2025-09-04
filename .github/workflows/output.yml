@@ -9,6 +9,10 @@ jobs:
     
     steps:
 
+     - name: Check file exists
+       run: |
+        ls -R
+
      - name: Upload to artfact
        id: upload-artfact
        uses: actions/upload-artifact@v4
